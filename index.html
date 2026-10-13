@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ñande Web | Páginas web para negocios de Warnes, Santa Cruz</title>
+<meta name="description" content="Páginas web con menú digital, WhatsApp y Google Maps para negocios de Warnes, Santa Cruz, Bolivia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #07060d;
+    --surface: #110e1d;
+    --surface-2: #1a1630;
+    --line: #2b2547;
+    --text: #f3f0ff;
+    --muted: #b3acd0;
+    --cyan: #22f0ff;
+    --magenta: #ff2e88;
+    --violet: #9b5cff;
+    --wa: #25d366;
+    --font-display: 'Tilt Neon', 'Trebuchet MS', sans-serif;
+    --font-body: 'DM Sans', 'Segoe UI', Arial, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  body {
+    font-family: var(--font-body);
+    background: var(--ink);
+    color: var(--text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; border-radius: 6px; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+
+  /* ---------- HEADER ---------- */
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 16px 0;
+    transition: background .3s, padding .3s, box-shadow .3s;
+  }
+  header.scrolled {
+    background: rgba(7,6,13,.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 10px 0;
+    box-shadow: 0 1px 0 var(--line), 0 8px 30px rgba(0,0,0,.5);
+  }
+  .bar { display: flex; align-items: center; justify-content: space-between; }
+  .logo {
+    font-family: var(--font-display);
+    font-size: 1.45rem; text-decoration: none; color: var(--magenta);
+    text-shadow: 0 0 6px rgba(255,46,136,.9), 0 0 22px rgba(255,46,136,.55);
+  }
+  nav { display: flex; align-items: center; gap: 6px; }
+  nav a {
+    text-decoration: none; padding: 8px 14px; border-radius: 999px;
+    font-size: .95rem; color: var(--muted); transition: color .2s, background .2s;
+  }
+  nav a:hover { color: var(--text); background: rgba(255,255,255,.07); }
+  nav a.nav-cta { color: var(--ink); background: var(--cyan); font-weight: 700; margin-left: 8px; }
+  nav a.nav-cta:hover { background: #7bf7ff; color: var(--ink); box-shadow: 0 0 20px rgba(34,240,255,.6); }
+  .burger {
+    display: none; background: none; border: 1px solid var(--line); color: var(--text);
+    width: 44px; height: 44px; border-radius: 12px; cursor: pointer; font-size: 1.3rem;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative; min-height: 100svh; display: grid; place-items: center;
+    text-align: center; padding: 130px 20px 90px; overflow: hidden; isolation: isolate;
+    background:
+      radial-gradient(60% 50% at 50% 0%, rgba(155,92,255,.28), transparent 70%),
+      radial-gradient(40% 40% at 85% 85%, rgba(255,46,136,.18), transparent 70%),
+      radial-gradient(40% 40% at 10% 90%, rgba(34,240,255,.14), transparent 70%),
+      var(--ink);
+  }
+  /* Para usar una foto real de Warnes de fondo: descomenta y cambia la ruta
+  .hero::before {
+    content: ""; position: absolute; inset: 0; z-index: -2;
+    background: url('img/warnes-hero.webp') center/cover; opacity: .28;
+  } */
+  .hero::after {
+    content: ""; position: absolute; left: -10%; right: -10%; bottom: -5%; height: 55%; z-index: -1;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 56px 56px;
+    transform: perspective(500px) rotateX(62deg);
+    transform-origin: bottom;
+    mask-image: linear-gradient(to top, #000 10%, transparent 90%);
+    -webkit-mask-image: linear-gradient(to top, #000 10%, transparent 90%);
+    opacity: .7;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2.5rem, 8vw, 5.6rem);
+    line-height: 1.05; letter-spacing: .01em;
+    max-width: 14ch; margin: 0 auto 26px;
+    color: #eaffff;
+    text-shadow:
+      0 0 4px #fff,
+      0 0 12px var(--cyan),
+      0 0 30px var(--cyan),
+      0 0 70px rgba(34,240,255,.6);
+    animation: encender 1.8s steps(1, end) .2s both;
+  }
+  @keyframes encender {
+    0%   { opacity: .08; text-shadow: none; }
+    10%  { opacity: 1; }
+    14%  { opacity: .1; text-shadow: none; }
+    22%  { opacity: 1; }
+    26%  { opacity: .2; }
+    40%  { opacity: 1; }
+    100% { opacity: 1; }
+  }
+  .hero p { font-size: clamp(1.05rem, 2.4vw, 1.3rem); max-width: 620px; margin: 0 auto 36px; color: var(--muted); }
+  .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+    padding: 15px 32px; border-radius: 999px; font-weight: 700; font-size: 1.05rem;
+    border: 2px solid transparent; cursor: pointer; font-family: inherit;
+    transition: transform .2s, box-shadow .2s, background .2s;
+  }
+  .btn:hover { transform: translateY(-3px); }
+  .btn-primary { background: var(--magenta); color: #fff; box-shadow: 0 0 22px rgba(255,46,136,.55); }
+  .btn-primary:hover { box-shadow: 0 0 40px rgba(255,46,136,.85); }
+  .btn-ghost { border-color: var(--cyan); color: var(--cyan); background: transparent; }
+  .btn-ghost:hover { background: rgba(34,240,255,.1); box-shadow: 0 0 24px rgba(34,240,255,.4); }
+  .btn-wa { background: var(--wa); color: #04210f; box-shadow: 0 0 22px rgba(37,211,102,.45); }
+  .btn-wa:hover { box-shadow: 0 0 40px rgba(37,211,102,.75); }
+
+  /* ---------- SECCIONES ---------- */
+  section { padding: 100px 0; }
+  .sec-head { text-align: center; max-width: 640px; margin: 0 auto 56px; }
+  .sec-head h2 {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(2rem, 5vw, 3.1rem); line-height: 1.15; margin-bottom: 14px;
+    text-shadow: 0 0 18px rgba(155,92,255,.7);
+  }
+  .sec-head p { color: var(--muted); font-size: 1.08rem; }
+
+  /* ---------- DEMOS: cada tarjeta es un letrero de neón ---------- */
+  .grid {
+    display: grid; gap: 28px;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  }
+  .card {
+    --c: var(--cyan);
+    display: flex; flex-direction: column; text-decoration: none;
+    background: var(--surface);
+    border: 1.5px solid color-mix(in srgb, var(--c) 45%, transparent);
+    border-radius: 20px; overflow: hidden;
+    box-shadow: 0 0 14px color-mix(in srgb, var(--c) 22%, transparent);
+    transition: transform .3s, box-shadow .3s, border-color .3s;
+  }
+  .card:hover, .card:focus-visible {
+    transform: translateY(-8px);
+    border-color: var(--c);
+    box-shadow: 0 0 32px color-mix(in srgb, var(--c) 55%, transparent), 0 18px 40px rgba(0,0,0,.6);
+  }
+  .card .foto { position: relative; aspect-ratio: 16/10; overflow: hidden; background: var(--surface-2); }
+  .card .foto img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+  .card:hover .foto img { transform: scale(1.07); }
+  .card .foto::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(to top, var(--surface) 2%, transparent 55%);
+  }
+  .card .tipo {
+    position: absolute; z-index: 2; top: 14px; left: 14px;
+    background: rgba(7,6,13,.8); color: var(--c); border: 1px solid var(--c);
+    padding: 4px 12px; border-radius: 999px; font-size: .85rem; font-weight: 700;
+    text-shadow: 0 0 8px var(--c);
+  }
+  .card .info { padding: 8px 22px 24px; display: flex; flex-direction: column; flex: 1; }
+  .card h3 {
+    font-family: var(--font-display); font-weight: 400; font-size: 1.5rem; line-height: 1.2;
+    color: var(--c); text-shadow: 0 0 10px color-mix(in srgb, var(--c) 70%, transparent);
+    margin-bottom: 8px;
+  }
+  .card p { color: var(--muted); font-size: .96rem; margin-bottom: 18px; flex: 1; }
+  .card .ver { color: var(--text); font-weight: 700; font-size: .95rem; }
+  .card .ver::after { content: " →"; color: var(--c); transition: margin .2s; }
+  .card:hover .ver::after { margin-left: 6px; }
+
+  /* ---------- BENEFICIOS ---------- */
+  .beneficios { background: linear-gradient(180deg, var(--ink), var(--surface) 50%, var(--ink)); }
+  .ben-grid { display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+  .ben {
+    padding: 30px 26px; border-radius: 20px;
+    background: rgba(255,255,255,.03); border: 1px solid var(--line);
+    transition: border-color .3s, background .3s;
+  }
+  .ben:hover { border-color: var(--violet); background: rgba(155,92,255,.08); }
+  .ben .ico {
+    width: 58px; height: 58px; display: grid; place-items: center; font-size: 1.7rem;
+    border-radius: 16px; margin-bottom: 18px;
+    background: rgba(155,92,255,.15); box-shadow: 0 0 20px rgba(155,92,255,.35);
+  }
+  .ben h3 { font-size: 1.15rem; margin-bottom: 8px; }
+  .ben p { color: var(--muted); font-size: .96rem; }
+
+  /* ---------- PAQUETES ---------- */
+  .planes { display: grid; gap: 26px; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); align-items: stretch; }
+  .plan {
+    position: relative; display: flex; flex-direction: column;
+    padding: 36px 30px; border-radius: 22px;
+    background: var(--surface); border: 1.5px solid var(--line);
+  }
+  .plan.destacado {
+    border-color: var(--magenta);
+    background: linear-gradient(180deg, rgba(255,46,136,.12), var(--surface) 60%);
+    box-shadow: 0 0 36px rgba(255,46,136,.35);
+  }
+  .plan .badge {
+    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    background: var(--magenta); color: #fff; font-weight: 700; font-size: .85rem;
+    padding: 4px 16px; border-radius: 999px; box-shadow: 0 0 16px rgba(255,46,136,.7);
+  }
+  .plan h3 { font-family: var(--font-display); font-weight: 400; font-size: 1.7rem; margin-bottom: 6px; }
+  .plan .precio { font-size: 2.6rem; font-weight: 700; color: var(--cyan); text-shadow: 0 0 16px rgba(34,240,255,.5); line-height: 1.1; }
+  .plan .precio small { font-size: 1rem; color: var(--muted); font-weight: 400; text-shadow: none; }
+  .plan .desc { color: var(--muted); margin: 8px 0 22px; font-size: .96rem; }
+  .plan ul { list-style: none; margin-bottom: 28px; flex: 1; }
+  .plan li { padding: 7px 0 7px 28px; position: relative; font-size: .98rem; border-bottom: 1px solid rgba(255,255,255,.05); }
+  .plan li::before { content: "✓"; position: absolute; left: 0; color: var(--wa); font-weight: 700; }
+  .plan .btn { justify-content: center; }
+  .nota { text-align: center; color: var(--muted); margin-top: 28px; font-size: .95rem; }
+
+  /* ---------- CONTACTO ---------- */
+  .contacto-grid { display: grid; gap: 32px; grid-template-columns: 1fr 1fr; align-items: start; }
+  .form {
+    padding: 34px 30px; border-radius: 22px; background: var(--surface);
+    border: 1.5px solid var(--cyan); box-shadow: 0 0 30px rgba(34,240,255,.2);
+  }
+  .form h3 { font-family: var(--font-display); font-weight: 400; font-size: 1.7rem; margin-bottom: 20px; }
+  .campo { margin-bottom: 18px; }
+  .campo label { display: block; font-weight: 700; font-size: .92rem; margin-bottom: 6px; }
+  .campo input, .campo select, .campo textarea {
+    width: 100%; padding: 13px 15px; border-radius: 12px; font: inherit; color: var(--text);
+    background: var(--ink); border: 1.5px solid var(--line); transition: border-color .2s, box-shadow .2s;
+  }
+  .campo input:focus, .campo select:focus, .campo textarea:focus {
+    outline: none; border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(34,240,255,.25);
+  }
+  .campo textarea { resize: vertical; min-height: 96px; }
+  .form .btn { width: 100%; justify-content: center; }
+  .lateral { display: flex; flex-direction: column; gap: 22px; }
+  .lateral h3 { font-family: var(--font-display); font-weight: 400; font-size: 1.7rem; }
+  .lateral p { color: var(--muted); }
+  .mapa { border-radius: 22px; overflow: hidden; border: 1.5px solid var(--violet); box-shadow: 0 0 28px rgba(155,92,255,.3); }
+  .mapa iframe { width: 100%; height: 300px; border: 0; display: block; filter: invert(.9) hue-rotate(180deg) saturate(.8); }
+
+  /* ---------- FOOTER ---------- */
+  footer { border-top: 1px solid var(--line); padding: 36px 0; text-align: center; color: var(--muted); font-size: .92rem; }
+  footer .redes { margin-top: 10px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+  footer .redes a { text-decoration: none; color: var(--cyan); padding: 6px 14px; border-radius: 999px; border: 1px solid var(--line); transition: background .2s, box-shadow .2s; }
+  footer .redes a:hover { background: rgba(34,240,255,.1); box-shadow: 0 0 14px rgba(34,240,255,.4); }
+
+  /* ---------- WHATSAPP FLOTANTE ---------- */
+  .wa-float {
+    position: fixed; right: 20px; bottom: 20px; z-index: 90;
+    width: 60px; height: 60px; border-radius: 50%; display: grid; place-items: center;
+    background: var(--wa); color: #04210f; font-size: 1.9rem; text-decoration: none;
+    box-shadow: 0 0 0 0 rgba(37,211,102,.7), 0 6px 24px rgba(0,0,0,.5);
+    animation: pulso 2.4s infinite;
+  }
+  @keyframes pulso { 70% { box-shadow: 0 0 0 18px rgba(37,211,102,0), 0 6px 24px rgba(0,0,0,.5); } 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0), 0 6px 24px rgba(0,0,0,.5); } }
+
+  /* ---------- APARICIÓN AL HACER SCROLL ---------- */
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 860px) {
+    .contacto-grid { grid-template-columns: 1fr; }
+    .burger { display: block; }
+    nav {
+      position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch;
+      background: rgba(7,6,13,.97); padding: 12px 20px 20px; gap: 4px;
+      border-bottom: 1px solid var(--line);
+      display: none;
+    }
+    nav.abierto { display: flex; }
+    nav a { padding: 14px; font-size: 1.05rem; }
+    nav a.nav-cta { margin: 8px 0 0; text-align: center; }
+    section { padding: 72px 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="top">
+  <div class="wrap bar">
+    <a href="#" class="logo">Ñande Web</a>
+    <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">☰</button>
+    <nav id="menu">
+      <a href="#demos">Demos</a>
+      <a href="#beneficios">Beneficios</a>
+      <a href="#paquetes">Paquetes</a>
+      <a href="#contacto" class="nav-cta">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" style="padding-top:130px;padding-bottom:90px;">
+  <div class="wrap">
+    <h1>Tu negocio de Warnes, siempre encendido</h1>
+    <p>Páginas web con menú digital, botón de WhatsApp y ubicación en Google Maps para restaurantes, tiendas, alojamientos y consultorios de Warnes, Santa Cruz.</p>
+    <div class="hero-actions">
+      <a href="#demos" class="btn btn-primary">Ver las demos</a>
+      <a href="https://wa.me/59171607412?text=Hola,%20vi%20tu%20portafolio%20y%20quiero%20una%20p%C3%A1gina%20web%20para%20mi%20negocio%20en%20Warnes" target="_blank" rel="noopener" class="btn btn-ghost">Escríbeme nomás</a>
+    </div>
+  </div>
+</section>
+
+<!-- DEMOS -->
+<section id="demos">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Elige un rubro y mira cómo quedaría tu página</h2>
+      <p>Cada demo es una página completa. Toca una tarjeta para abrirla en otra pestaña.</p>
+    </div>
+
+    <!--
+      FOTOS: cada tarjeta tiene una imagen de ejemplo.
+      Para presentar a un cliente real de Warnes, reemplaza el src por una foto de SU negocio
+      (por ejemplo img/restaurante.webp). Pide permiso al dueño antes de usarla.
+    -->
+    <div class="grid">
+
+      <a href="restaurante.html" class="card reveal" style="--c:#ff8a1f" target="_blank" rel="noopener">
+        <div class="foto">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=70" alt="Interior de un restaurante" loading="lazy" width="600" height="375">
+          <span class="tipo">🍽️ Restaurante</span>
+        </div>
+        <div class="info">
+          <h3>Restaurante El Sabor</h3>
+          <p>Menú digital, reservas por WhatsApp y ubicación en Google Maps.</p>
+          <span class="ver">Ver demo</span>
+        </div>
+      </a>
+
+      <a href="pizzeria.html" class="card reveal" style="--c:#ff3b4e" target="_blank" rel="noopener">
+        <div class="foto">
+          <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&q=70" alt="Pizza recién horneada" loading="lazy" width="600" height="375">
+          <span class="tipo">🍕 Pizzería</span>
+        </div>
+        <div class="info">
+          <h3>Pizzería Bella Napoli</h3>
+          <p>Tamaños, combos, delivery y pedidos por WhatsApp.</p>
+          <span class="ver">Ver demo</span>
+        </div>
+      </a>
+
+      <a href="cafeteria.html" class="card reveal" style="--c:#ffb86b" target="_blank" rel="noopener">
+        <div class="foto">
+          <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=600&q=70" alt="Cafetería acogedora" loading="lazy" width="600" height="375">
+          <span class="tipo">☕ Cafetería</span>
+        </div>
+        <div class="info">
+          <h3>Café Aroma</h3>
+          <p>Carta digital, reservas, WiFi y galería del ambiente.</p>
+          <span class="ver">Ver demo</span>
+        </div>
+      </a>
+
+      <a href="alojamiento.html" class="card reveal" style="--c:#2ee6c5" target="_blank" rel="noopener">
+        <div class="foto">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=70" alt="Habitación de alojamiento" loading="lazy" width="600" height="375">
+          <span class="tipo">🏨 Alojamiento</span>
+        </div>
+        <div class="info">
+          <h3>Alojamiento El Descanso</h3>
+          <p>Habitaciones, tarifas, servicios y reservas por WhatsApp.</p>
+          <span class="ver">Ver demo</span>
+        </div>
+      </a>
+
+      <a href="pub.html" class="card reveal" style="--c:#ff2e88" target="_blank" rel="noopener">
+        <div class="foto">
+          <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=600&q=70" alt="Barra de un pub" loading="lazy" width="600" height="375">
+          <span class="tipo">🍺 Pub / Bar</span>
+        </div>
+        <div class="info">
+          <h3>Pub La Esquina</h3>
+          <p>Eventos, carta de bebidas, promos y reserva de mesas.</p>
+          <span class="ver">Ver demo</span>
+        </div>
+      </a>
+
+      <a href="tienda.html" class="card reveal" style="--c:#6dff8a" target="_blank" rel="noopener">
+        <div class="foto">
+          <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=600&q=70" alt="Estantes de una tienda" loading="lazy" width="600" height="375">
+          <span class="tipo">🏪 Tienda</span>
+        </div>
+        <div class="info">
+          <h3>Tienda Natural</h3>
+          <p>Catálogo, envíos a domicilio y pedidos por WhatsApp.</p>
+          <span class="ver">Ver demo</span>
+        </div>
+      </a>
+
+      <a href="pescaderia.html" class="card reveal" style="--c:#3aa8ff" target="_blank" rel="noopener">
+        <div class="foto">
+          <img src="https://images.unsplash.com/photo-1544943910-4c1dc44aab44?w=600&q=70" alt="Pescado fresco" loading="lazy" width="600" height="375">
+          <span class="tipo">🐟 Pescadería</span>
+        </div>
+        <div class="info">
+          <h3>Pescadería Los Mangales</h3>
+          <p>Productos frescos del día, pedidos anticipados y zonas de entrega.</p>
+          <span class="ver">Ver demo</span>
+        </div>
+      </a>
+
+      <a href="pollos.html" class="card reveal" style="--c:#ffe033" target="_blank" rel="noopener">
+        <div class="foto">
+          <img src="https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=600&q=70" alt="Pollo a la leña" loading="lazy" width="600" height="375">
+          <span class="tipo">🍗 Pollos</span>
+        </div>
+        <div class="info">
+          <h3>Pollo a la Leña Chiqui</h3>
+          <p>Combos familiares, menú completo y delivery.</p>
+          <span class="ver">Ver demo</span>
+        </div>
+      </a>
+
+      <a href="disqueria.html" class="card reveal" style="--c:#ff4fd8" target="_blank" rel="noopener">
+        <div class="foto">
+          <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&q=70" alt="Discos de vinilo" loading="lazy" width="600" height="375">
+          <span class="tipo">💿 Disquería</span>
+        </div>
+        <div class="info">
+          <h3>Disquería Gatito</h3>
+          <p>Catálogo de vinilos, CDs y accesorios. Consultas por WhatsApp.</p>
+          <span class="ver">Ver demo</span>
+        </div>
+      </a>
+
+      <a href="consultorio.html" class="card reveal" style="--c:#4dc3ff" target="_blank" rel="noopener">
+        <div class="foto">
+          <img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&q=70" alt="Consultorio médico" loading="lazy" width="600" height="375">
+          <span class="tipo">🩺 Consultorio</span>
+        </div>
+        <div class="info">
+          <h3>Consultorio Dr. Pérez</h3>
+          <p>Especialidades, servicios, horarios y agenda de citas.</p>
+          <span class="ver">Ver demo</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- BENEFICIOS -->
+<section class="beneficios" id="beneficios">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>¿Por qué tu negocio en Warnes necesita una página web?</h2>
+      <p>Hoy la gente busca en el celular antes de salir de casa.</p>
+    </div>
+    <div class="ben-grid">
+      <div class="ben reveal">
+        <div class="ico">🔎</div>
+        <h3>Te encuentran en Google Maps</h3>
+        <p>Con tu perfil en Google, quien busca cerca de Warnes ve tu negocio con fotos, horarios y ubicación.</p>
+      </div>
+      <div class="ben reveal">
+        <div class="ico">🕐</div>
+        <h3>Abierto las 24 horas</h3>
+        <p>Tu menú, precios y horarios disponibles aunque el local esté cerrado.</p>
+      </div>
+      <div class="ben reveal">
+        <div class="ico">📲</div>
+        <h3>Pedidos directos</h3>
+        <p>Un toque y el cliente te escribe por WhatsApp con su pedido o reserva armado.</p>
+      </div>
+      <div class="ben reveal">
+        <div class="ico">📍</div>
+        <h3>Llegan sin perderse</h3>
+        <p>Ubicación en Google Maps para que te encuentren desde Santa Cruz, Montero o la carretera.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAQUETES -->
+<section id="paquetes">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Paquetes para cada negocio</h2>
+      <p>Precios claros, sin letra chica. Paga una vez y la página es tuya.</p>
+    </div>
+    <div class="planes">
+
+      <!-- Ajusta los precios a tu realidad -->
+      <article class="plan reveal">
+        <h3>Básico</h3>
+        <div class="precio">Bs 500 <small>pago único</small></div>
+        <p class="desc">Ideal para empezar a tener presencia en internet.</p>
+        <ul>
+          <li>Página de 1 sección</li>
+          <li>Botón de WhatsApp</li>
+          <li>Ubicación en Google Maps</li>
+          <li>Diseño para celular</li>
+          <li>Entrega en 3 días</li>
+        </ul>
+        <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://wa.me/59171607412?text=Hola,%20me%20interesa%20el%20paquete%20B%C3%A1sico">Quiero este</a>
+      </article>
+
+      <article class="plan destacado reveal">
+        <span class="badge">El más pedido</span>
+        <h3>Negocio</h3>
+        <div class="precio">Bs 900 <small>pago único</small></div>
+        <p class="desc">Todo lo que un negocio de barrio necesita para vender más.</p>
+        <ul>
+          <li>Menú o catálogo digital</li>
+          <li>Galería de fotos de tu local</li>
+          <li>WhatsApp en cada producto</li>
+          <li>Te creo tu perfil en Google Maps (gratis)</li>
+          <li>Horarios y ubicación en la página</li>
+          <li>Enlaces a Instagram y Facebook</li>
+          <li>Entrega en 5 días</li>
+        </ul>
+        <a class="btn btn-primary" target="_blank" rel="noopener" href="https://wa.me/59171607412?text=Hola,%20me%20interesa%20el%20paquete%20Negocio">Quiero este</a>
+      </article>
+
+      <article class="plan reveal">
+        <h3>Premium</h3>
+        <div class="precio">Bs 1.500 <small>pago único</small></div>
+        <p class="desc">Para negocios que quieren destacar sobre la competencia.</p>
+        <ul>
+          <li>Todo lo del paquete Negocio</li>
+          <li>Sesión de fotos en tu local</li>
+          <li>Te ayudo a configurar tu dominio (.com), que lo paga el dueño</li>
+          <li>Reservas o citas por WhatsApp</li>
+          <li>1 mes de cambios gratis</li>
+        </ul>
+        <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://wa.me/59171607412?text=Hola,%20me%20interesa%20el%20paquete%20Premium">Quiero este</a>
+      </article>
+
+    </div>
+    <p class="nota reveal">¿Tu negocio necesita algo distinto? Escríbeme y armamos un paquete a tu medida.</p>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Hablemos pues, de tu negocio</h2>
+      <p>Cuéntame qué vendes y te muestro cómo quedaría tu página. Sin compromiso.</p>
+    </div>
+    <div class="contacto-grid">
+
+      <form class="form reveal" id="form-contacto">
+        <h3>Escríbeme</h3>
+        <div class="campo">
+          <label for="nombre">Tu nombre</label>
+          <input type="text" id="nombre" name="nombre" required autocomplete="name">
+        </div>
+        <div class="campo">
+          <label for="negocio">Nombre de tu negocio</label>
+          <input type="text" id="negocio" name="negocio" required>
+        </div>
+        <div class="campo">
+          <label for="rubro">Tipo de negocio</label>
+          <select id="rubro" name="rubro" required>
+            <option value="">Elige uno</option>
+            <option>Restaurante</option>
+            <option>Pizzería</option>
+            <option>Cafetería</option>
+            <option>Alojamiento</option>
+            <option>Pub / Bar</option>
+            <option>Tienda</option>
+            <option>Pescadería</option>
+            <option>Pollos / Comida rápida</option>
+            <option>Disquería</option>
+            <option>Consultorio</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label for="mensaje">Mensaje (opcional)</label>
+          <textarea id="mensaje" name="mensaje"></textarea>
+        </div>
+        <button type="submit" class="btn btn-wa">📲 Enviar por WhatsApp</button>
+      </form>
+
+      <div class="lateral reveal">
+        <h3>Trabajo con negocios de toda la provincia Warnes</h3>
+        <p>Si tu negocio está en Warnes, Okinawa o alrededores, puedo pasar a tomar fotos de tu local y dejar tu página lista.</p>
+        <div class="mapa">
+          <iframe src="https://www.google.com/maps?q=Warnes,+Santa+Cruz,+Bolivia&output=embed" title="Mapa de Warnes, Santa Cruz" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <p>© 2026 Ñande Web. Páginas web para negocios de Warnes, Santa Cruz, Bolivia.</p>
+    <div class="redes">
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+      <a href="https://wa.me/59171607412" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOTANTE -->
+<a class="wa-float" href="https://wa.me/59171607412?text=Hola,%20quiero%20una%20p%C3%A1gina%20web%20para%20mi%20negocio" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">💬</a>
+
+<script>
+  // Header transparente que se oscurece al bajar
+  const header = document.getElementById('top');
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 40);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Menú hamburguesa
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('menu');
+  burger.addEventListener('click', () => {
+    const abierto = menu.classList.toggle('abierto');
+    burger.setAttribute('aria-expanded', abierto);
+    burger.textContent = abierto ? '✕' : '☰';
+  });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    menu.classList.remove('abierto');
+    burger.setAttribute('aria-expanded', 'false');
+    burger.textContent = '☰';
+  }));
+
+  // Aparición suave al hacer scroll
+  const items = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entradas) => {
+      entradas.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    items.forEach((el, i) => { el.style.transitionDelay = (i % 3) * 90 + 'ms'; io.observe(el); });
+  } else {
+    items.forEach(el => el.classList.add('visible'));
+  }
+
+  // Formulario: arma el mensaje y lo envía por WhatsApp (no necesita servidor)
+  document.getElementById('form-contacto').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const f = e.target;
+    let texto = 'Hola, soy ' + f.nombre.value + '. Mi negocio es "' + f.negocio.value + '" (' + f.rubro.value + ') en Warnes. Quiero una página web.';
+    if (f.mensaje.value.trim()) texto += ' ' + f.mensaje.value.trim();
+    window.open('https://wa.me/59171607412?text=' + encodeURIComponent(texto), '_blank', 'noopener');
+  });
+</script>
+</body>
+</html>

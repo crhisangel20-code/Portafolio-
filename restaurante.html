@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parrillada El Sabor | Restaurante en Warnes, Santa Cruz</title>
+<meta name="description" content="Costillar a la estaca, pacumutu y parrilladas en Warnes, Santa Cruz. Mira el menú y reserva por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0705;
+    --surface: #15100c;
+    --surface-2: #211a14;
+    --line: #3a2c20;
+    --text: #fff4ea;
+    --muted: #c9b8a6;
+    --fire: #ff7a18;      /* naranja neón */
+    --ember: #ffb020;     /* brasa */
+    --hot: #ff3d2e;       /* llama */
+    --wa: #25d366;
+    --font-display: 'Anton', 'Impact', sans-serif;
+    --font-body: 'Barlow', 'Segoe UI', Arial, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  body { font-family: var(--font-body); background: var(--ink); color: var(--text); line-height: 1.65; font-size: 1.05rem; -webkit-font-smoothing: antialiased; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--ember); outline-offset: 3px; border-radius: 6px; }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
+
+  /* HEADER */
+  header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 0; transition: background .3s, padding .3s, box-shadow .3s; }
+  header.scrolled { background: rgba(10,7,5,.9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); padding: 10px 0; box-shadow: 0 1px 0 var(--line), 0 8px 30px rgba(0,0,0,.6); }
+  .bar { display: flex; align-items: center; justify-content: space-between; }
+  .logo { font-family: var(--font-display); font-size: 1.6rem; letter-spacing: .04em; text-decoration: none; color: var(--fire); text-shadow: 0 0 6px rgba(255,122,24,.9), 0 0 24px rgba(255,122,24,.55); }
+  nav { display: flex; align-items: center; gap: 4px; }
+  nav a { text-decoration: none; padding: 8px 14px; border-radius: 999px; font-size: .98rem; color: var(--muted); transition: color .2s, background .2s; }
+  nav a:hover { color: var(--text); background: rgba(255,255,255,.07); }
+  nav a.nav-cta { background: var(--fire); color: #1a0b00; font-weight: 700; margin-left: 8px; }
+  nav a.nav-cta:hover { box-shadow: 0 0 20px rgba(255,122,24,.7); color: #1a0b00; }
+  .burger { display: none; background: none; border: 1px solid var(--line); color: var(--text); width: 44px; height: 44px; border-radius: 12px; cursor: pointer; font-size: 1.3rem; }
+
+  /* HERO */
+  .hero {
+    position: relative; min-height: 100svh; display: grid; align-items: center; padding: 130px 0 90px; isolation: isolate; overflow: hidden;
+    background: var(--ink);
+  }
+  .hero-img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; opacity: .5; }
+  .hero::before {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background:
+      radial-gradient(60% 55% at 15% 100%, rgba(255,122,24,.35), transparent 70%),
+      linear-gradient(90deg, rgba(10,7,5,.95) 10%, rgba(10,7,5,.55) 60%, rgba(10,7,5,.85));
+  }
+  .hero h1 {
+    font-family: var(--font-display); font-weight: 400; text-transform: uppercase;
+    font-size: clamp(3rem, 10vw, 7rem); line-height: .98; letter-spacing: .01em;
+    max-width: 11ch; margin-bottom: 22px; color: #fff3e6;
+    text-shadow: 0 0 4px #fff, 0 0 14px var(--fire), 0 0 36px var(--fire), 0 0 80px rgba(255,122,24,.6);
+    animation: encender 1.8s steps(1, end) .2s both;
+  }
+  @keyframes encender { 0%{opacity:.08;text-shadow:none} 10%{opacity:1} 14%{opacity:.1;text-shadow:none} 22%{opacity:1} 26%{opacity:.2} 40%{opacity:1} 100%{opacity:1} }
+  .hero p { max-width: 520px; font-size: clamp(1.1rem, 2.4vw, 1.3rem); color: var(--muted); margin-bottom: 34px; }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; padding: 15px 32px; border-radius: 999px; font-weight: 700; font-size: 1.05rem; border: 2px solid transparent; cursor: pointer; font-family: inherit; transition: transform .2s, box-shadow .2s, background .2s; }
+  .btn:hover { transform: translateY(-3px); }
+  .btn-fire { background: var(--fire); color: #1a0b00; box-shadow: 0 0 24px rgba(255,122,24,.55); }
+  .btn-fire:hover { box-shadow: 0 0 44px rgba(255,122,24,.9); }
+  .btn-ghost { border-color: var(--ember); color: var(--ember); }
+  .btn-ghost:hover { background: rgba(255,176,32,.1); box-shadow: 0 0 24px rgba(255,176,32,.4); }
+  .btn-wa { background: var(--wa); color: #04210f; box-shadow: 0 0 22px rgba(37,211,102,.45); }
+  .btn-wa:hover { box-shadow: 0 0 40px rgba(37,211,102,.75); }
+  .hero-datos { display: flex; gap: 28px; flex-wrap: wrap; margin-top: 44px; color: var(--muted); font-size: .98rem; }
+  .hero-datos strong { color: var(--ember); display: block; font-size: 1.05rem; }
+
+  /* SECCIONES */
+  section { padding: 100px 0; }
+  .sec-head { max-width: 620px; margin-bottom: 48px; }
+  .sec-head h2 { font-family: var(--font-display); font-weight: 400; text-transform: uppercase; font-size: clamp(2.2rem, 6vw, 3.6rem); line-height: 1.05; margin-bottom: 12px; color: var(--fire); text-shadow: 0 0 18px rgba(255,122,24,.55); }
+  .sec-head p { color: var(--muted); }
+
+  /* MENÚ */
+  .menu-grid { display: grid; gap: 22px; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
+  .plato {
+    display: flex; flex-direction: column; padding: 26px 26px 22px; border-radius: 18px;
+    background: var(--surface); border: 1.5px solid var(--line);
+    transition: transform .3s, border-color .3s, box-shadow .3s;
+  }
+  .plato:hover { transform: translateY(-6px); border-color: var(--fire); box-shadow: 0 0 28px rgba(255,122,24,.35), 0 14px 34px rgba(0,0,0,.6); }
+  .plato-top { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; margin-bottom: 8px; }
+  .plato h3 { font-family: var(--font-display); font-weight: 400; font-size: 1.6rem; letter-spacing: .02em; text-transform: uppercase; }
+  .precio { font-family: var(--font-display); font-size: 1.5rem; color: var(--ember); text-shadow: 0 0 12px rgba(255,176,32,.5); white-space: nowrap; }
+  .plato p { color: var(--muted); font-size: .98rem; flex: 1; margin-bottom: 18px; }
+  .plato .pedir { align-self: flex-start; text-decoration: none; font-weight: 700; font-size: .95rem; color: var(--wa); border: 1.5px solid var(--wa); padding: 8px 18px; border-radius: 999px; transition: background .2s, box-shadow .2s; }
+  .plato .pedir:hover { background: rgba(37,211,102,.12); box-shadow: 0 0 16px rgba(37,211,102,.45); }
+  .nota { margin-top: 28px; color: var(--muted); font-size: .95rem; }
+
+  /* GALERÍA */
+  .galeria { background: var(--surface); }
+  .gal-grid { display: grid; gap: 14px; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 190px; }
+  .gal-grid figure { position: relative; overflow: hidden; border-radius: 16px; border: 1.5px solid var(--line); background: linear-gradient(135deg, var(--surface-2), #2b1a0c); }
+  .gal-grid figure:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+  .gal-grid figure:nth-child(4) { grid-column: span 2; }
+  .gal-grid img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+  .gal-grid figure:hover img { transform: scale(1.08); }
+  .gal-grid figure:hover { border-color: var(--fire); box-shadow: 0 0 24px rgba(255,122,24,.4); }
+
+  /* UBICACIÓN */
+  .ubic-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 36px; align-items: stretch; }
+  .ubic-info { display: flex; flex-direction: column; gap: 22px; }
+  .dato { padding: 20px 22px; border-radius: 16px; background: var(--surface); border-left: 4px solid var(--fire); }
+  .dato h3 { font-size: 1.1rem; margin-bottom: 4px; color: var(--ember); }
+  .dato p { color: var(--muted); font-size: .98rem; }
+  .mapa { border-radius: 20px; overflow: hidden; border: 1.5px solid var(--fire); box-shadow: 0 0 30px rgba(255,122,24,.3); min-height: 380px; }
+  .mapa iframe { width: 100%; height: 100%; min-height: 380px; border: 0; display: block; filter: invert(.9) hue-rotate(180deg) saturate(.7); }
+
+  /* RESERVA */
+  .reserva { text-align: center; background: radial-gradient(60% 100% at 50% 100%, rgba(255,122,24,.28), transparent 70%), var(--ink); }
+  .reserva h2 { font-family: var(--font-display); font-weight: 400; text-transform: uppercase; font-size: clamp(2.2rem, 6vw, 3.8rem); line-height: 1.05; margin-bottom: 14px; text-shadow: 0 0 20px rgba(255,122,24,.6); }
+  .reserva p { color: var(--muted); max-width: 520px; margin: 0 auto 30px; }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--line); padding: 36px 0; text-align: center; color: var(--muted); font-size: .92rem; }
+  footer .redes { margin: 12px 0; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+  footer .redes a { text-decoration: none; color: var(--ember); padding: 6px 14px; border-radius: 999px; border: 1px solid var(--line); transition: background .2s, box-shadow .2s; }
+  footer .redes a:hover { background: rgba(255,176,32,.1); box-shadow: 0 0 14px rgba(255,176,32,.4); }
+  footer .volver { color: var(--muted); }
+
+  .wa-float { position: fixed; right: 20px; bottom: 20px; z-index: 90; width: 60px; height: 60px; border-radius: 50%; display: grid; place-items: center; background: var(--wa); color: #04210f; font-size: 1.9rem; text-decoration: none; box-shadow: 0 0 0 0 rgba(37,211,102,.7), 0 6px 24px rgba(0,0,0,.5); animation: pulso 2.4s infinite; }
+  @keyframes pulso { 70% { box-shadow: 0 0 0 18px rgba(37,211,102,0), 0 6px 24px rgba(0,0,0,.5); } 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0), 0 6px 24px rgba(0,0,0,.5); } }
+
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .ubic-grid { grid-template-columns: 1fr; }
+    .gal-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 160px; }
+    .gal-grid figure:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+    .gal-grid figure:nth-child(4) { grid-column: span 1; }
+  }
+  @media (max-width: 860px) {
+    .burger { display: block; }
+    nav { position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; background: rgba(10,7,5,.97); padding: 12px 20px 20px; gap: 4px; border-bottom: 1px solid var(--line); display: none; }
+    nav.abierto { display: flex; }
+    nav a { padding: 14px; font-size: 1.1rem; }
+    nav a.nav-cta { margin: 8px 0 0; text-align: center; }
+    section { padding: 72px 0; }
+    .hero { text-align: left; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="wrap bar">
+    <a href="#" class="logo">El Sabor</a>
+    <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">☰</button>
+    <nav id="menu">
+      <a href="#carta">Carta</a>
+      <a href="#galeria">Galería</a>
+      <a href="#ubicacion">Cómo llegar</a>
+      <a href="https://wa.me/59171607412?text=Hola,%20quiero%20reservar%20una%20mesa%20en%20El%20Sabor" target="_blank" rel="noopener" class="nav-cta">Reservar</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- Reemplaza con una foto real de tu parrilla: img/restaurante-hero.webp -->
+  <img class="hero-img" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&q=70" alt="Interior del restaurante" width="1600" height="1000" fetchpriority="high" onerror="this.remove()">
+  <div class="wrap">
+    <h1>Carne a las brasas en Warnes</h1>
+    <p>Costillar a la estaca, pacumutu y parrilladas cruceñas para compartir. Estamos sobre la Ruta 4, a unos 30 km al norte de Santa Cruz de la Sierra.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/59171607412?text=Hola,%20quiero%20reservar%20una%20mesa%20en%20El%20Sabor" target="_blank" rel="noopener" class="btn btn-fire">Reservar por WhatsApp</a>
+      <a href="#carta" class="btn btn-ghost">Ver la carta</a>
+    </div>
+    <div class="hero-datos">
+      <div><strong>Martes a domingo</strong>11:00 a 23:00</div>
+      <div><strong>Delivery en Warnes</strong>Pide por WhatsApp</div>
+      <div><strong>Estacionamiento</strong>Para autos y camionetas</div>
+    </div>
+  </div>
+</section>
+
+<!-- CARTA -->
+<section id="carta">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>La carta</h2>
+      <p>Platos cruceños hechos al momento. Toca "Pedir" y el mensaje sale listo en tu WhatsApp.</p>
+    </div>
+    <!-- Precios de ejemplo en bolivianos: cámbialos por los del negocio -->
+    <div class="menu-grid">
+
+      <article class="plato reveal">
+        <div class="plato-top"><h3>Costillar a la estaca</h3><span class="precio">Bs 85</span></div>
+        <p>Costilla de res asada lentamente junto al fuego. Viene con yuca, arroz con queso y ensalada.</p>
+        <a class="pedir" target="_blank" rel="noopener" href="https://wa.me/59171607412?text=Hola,%20quiero%20pedir%20un%20Costillar%20a%20la%20estaca">Pedir</a>
+      </article>
+
+      <article class="plato reveal">
+        <div class="plato-top"><h3>Pacumutu</h3><span class="precio">Bs 60</span></div>
+        <p>Brocheta de carne de res asada a las brasas, con yuca frita y llajua.</p>
+        <a class="pedir" target="_blank" rel="noopener" href="https://wa.me/59171607412?text=Hola,%20quiero%20pedir%20un%20Pacumutu">Pedir</a>
+      </article>
+
+      <article class="plato reveal">
+        <div class="plato-top"><h3>Parrillada para 2</h3><span class="precio">Bs 180</span></div>
+        <p>Costilla, chorizo, chuleta, pollo y morcilla. Con guarniciones y dos bebidas.</p>
+        <a class="pedir" target="_blank" rel="noopener" href="https://wa.me/59171607412?text=Hola,%20quiero%20pedir%20una%20Parrillada%20para%202">Pedir</a>
+      </article>
+
+      <article class="plato reveal">
+        <div class="plato-top"><h3>Majadito de charque</h3><span class="precio">Bs 40</span></div>
+        <p>Arroz con charque desmenuzado, huevo frito y plátano. El plato de todos los días.</p>
+        <a class="pedir" target="_blank" rel="noopener" href="https://wa.me/59171607412?text=Hola,%20quiero%20pedir%20un%20Majadito%20de%20charque">Pedir</a>
+      </article>
+
+      <article class="plato reveal">
+        <div class="plato-top"><h3>Churrasco criollo</h3><span class="precio">Bs 70</span></div>
+        <p>Corte de res a la parrilla, con papas, arroz y ensalada fresca.</p>
+        <a class="pedir" target="_blank" rel="noopener" href="https://wa.me/59171607412?text=Hola,%20quiero%20pedir%20un%20Churrasco%20criollo">Pedir</a>
+      </article>
+
+      <article class="plato reveal">
+        <div class="plato-top"><h3>Empanadas de queso</h3><span class="precio">Bs 8 c/u</span></div>
+        <p>Masa crocante con queso criollo derretido. Para empezar o para llevar.</p>
+        <a class="pedir" target="_blank" rel="noopener" href="https://wa.me/59171607412?text=Hola,%20quiero%20pedir%20Empanadas%20de%20queso">Pedir</a>
+      </article>
+
+    </div>
+    <p class="nota reveal">Los precios son de ejemplo. Consulta la carta completa y las bebidas por WhatsApp.</p>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section class="galeria" id="galeria">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Así se vive en El Sabor</h2>
+      <p>Fuego, carne y mesa larga con la familia.</p>
+    </div>
+    <!-- Reemplaza por fotos reales del local: img/galeria-1.webp ... galeria-6.webp -->
+    <div class="gal-grid reveal">
+      <figure><img src="https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=900&q=70" alt="Carne asada a la leña" loading="lazy" onerror="this.remove()"></figure>
+      <figure><img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=70" alt="Costilla a la parrilla" loading="lazy" onerror="this.remove()"></figure>
+      <figure><img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=70" alt="Brochetas a las brasas" loading="lazy" onerror="this.remove()"></figure>
+      <figure><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=70" alt="Plato servido en la mesa" loading="lazy" onerror="this.remove()"></figure>
+      <figure><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=70" alt="Salón del restaurante" loading="lazy" onerror="this.remove()"></figure>
+      <figure><img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=600&q=70" alt="Parrilla con carnes" loading="lazy" onerror="this.remove()"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- UBICACIÓN -->
+<section id="ubicacion">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Cómo llegar</h2>
+      <p>En el municipio de Warnes, provincia Ignacio Warnes, Santa Cruz.</p>
+    </div>
+    <div class="ubic-grid">
+      <div class="ubic-info reveal">
+        <div class="dato">
+          <h3>Desde Santa Cruz de la Sierra</h3>
+          <p>Toma la Ruta Nacional 4 (carretera a Cochabamba) hacia el norte. Warnes queda a unos 30 km de la ciudad.</p>
+        </div>
+        <div class="dato">
+          <h3>Dirección</h3>
+          <p>Reemplaza con la calle y zona exacta del negocio (por ejemplo, frente a la plaza o sobre la carretera).</p>
+        </div>
+        <div class="dato">
+          <h3>Horario</h3>
+          <p>Martes a domingo de 11:00 a 23:00. Lunes cerrado.</p>
+        </div>
+        <a href="https://wa.me/59171607412?text=Hola,%20%C2%BFme%20env%C3%ADan%20la%20ubicaci%C3%B3n%20de%20El%20Sabor?" target="_blank" rel="noopener" class="btn btn-wa" style="align-self:flex-start;">📍 Pedir ubicación por WhatsApp</a>
+      </div>
+      <div class="mapa reveal">
+        <iframe src="https://www.google.com/maps?q=Warnes,+Santa+Cruz,+Bolivia&output=embed" title="Mapa de Warnes, Santa Cruz" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVA -->
+<section class="reserva">
+  <div class="wrap reveal">
+    <h2>¿Vienes en familia o con amigos?</h2>
+    <p>Reserva tu mesa y te la dejamos lista. Atendemos cumpleaños y reuniones de hasta 40 personas.</p>
+    <a href="https://wa.me/59171607412?text=Hola,%20quiero%20reservar%20una%20mesa%20en%20El%20Sabor" target="_blank" rel="noopener" class="btn btn-fire">Reservar por WhatsApp</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Parrillada El Sabor. Warnes, Santa Cruz, Bolivia.</p>
+    <div class="redes">
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+      <a href="#">TikTok</a>
+      <a href="https://wa.me/59171607412" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+    <p><a class="volver" href="index.html">← Volver al portafolio</a></p>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/59171607412?text=Hola,%20quiero%20hacer%20una%20consulta" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">💬</a>
+
+<script>
+  const header = document.getElementById('top');
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 40);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('menu');
+  burger.addEventListener('click', () => {
+    const abierto = menu.classList.toggle('abierto');
+    burger.setAttribute('aria-expanded', abierto);
+    burger.textContent = abierto ? '✕' : '☰';
+  });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    menu.classList.remove('abierto');
+    burger.setAttribute('aria-expanded', 'false');
+    burger.textContent = '☰';
+  }));
+
+  const items = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entradas) => {
+      entradas.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    items.forEach((el, i) => { el.style.transitionDelay = (i % 3) * 90 + 'ms'; io.observe(el); });
+  } else {
+    items.forEach(el => el.classList.add('visible'));
+  }
+</script>
+</body>
+</html>
